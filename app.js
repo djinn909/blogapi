@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+require('dotenv').config();
 var index = require('./routes/index'); 
 
-const mongoDB = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.qtehi7q.mongodb.net/blog?retryWrites=true&w=majority ";
+const mongoDB = process.env.SECRET_DB;
 mongoose.connect(mongoDB, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
